@@ -1,13 +1,13 @@
 def print_board(board):
     print("  ", end="")
-    for i in range(len(board[0])):
+    for i in enumerate(board[0]):
         print(str(i+1), end=" ")
     print()
-    for i in range(len(board)):
+    for i, row in enumerate(board):
         row_str = str(i + 1) + " "
-        for j in range(len(board[i])):
-            if board[i][j] == ".":
+        for cell in row:
+            if cell == ".":
                 row_str += ". "
             else:
-                row_str += board[i][j] + " "
+                row_str += cell + " "
         print(row_str)
