@@ -15,12 +15,12 @@ This is a simple implementation of the classic Battleship game in Python. The ob
 
 ##  This implementation of Battleship has the following features:
 
-- ### The player can select the size of the grid they want to play on.
-- ### The location of the ships is randomized for both the player and the computer.
-- ### The player and the computer take turns guessing the location of the opponent's ships on the grid.
-- ### If a player successfully guesses the location of one of their opponent's ships, that ship is considered "sunk".
-- ### The game ends when all of one player's ships have been sunk.
-- ### The game displays the final board after the game has ended.
+-  The player can select the size of the grid they want to play on.
+-  The location of the ships is randomized for both the player and the computer.
+-  The player and the computer take turns guessing the location of the opponent's ships on the grid.
+-  If a player successfully guesses the location of one of their opponent's ships, that ship is considered "sunk".
+-  The game ends when all of one player's ships have been sunk.
+-  The game displays the final board after the game has ended.
 
 # Data Model
 
@@ -30,8 +30,8 @@ The game is played on a 2-dimensional grid, with each cell on the grid represent
 
 This code has been tested on Python 3.9.5 on Windows 10.
 
-- ###  Code has no errors when passing through [CI Python Linter](https://pep8ci.herokuapp.com/)
-- ###  Data validation for user inputs. Does not take wrong inputs and loop the game again.
-- ###  User choice of hit can not be out of the grid spec.
+-   Code has no errors when passing through [CI Python Linter](https://pep8ci.herokuapp.com/)
+-   Data validation for user inputs. Does not take wrong inputs and loop the game again.
+-   User choice of hit can not be out of the grid spec.
 
 
