@@ -44,3 +44,12 @@ def check_guess(guess, board):
     else:
         board[row][col] = "M"
         return False
+
+
+# Main function
+
+def main():
+    # Get the user's name
+    name = input("What is your name? ")
+    print(f"Hello {name}! Let's play Battleship.\n")
+    board_size_user_choice = int(input("Choose size of grid from 1-9: \n"))
