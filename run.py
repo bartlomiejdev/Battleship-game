@@ -74,16 +74,17 @@ def main():
         computer_board.append(["."] * board_size)
     place_ships(computer_board)
 
-    # Print the board
-    print("This is your board:\n")
-    print_board(player_board, False)
-    print("\nThis is computers board:\n")
-    print_board(computer_board, True)
-
     # Game loop
     computer_ships = 4
     player_ships = 4
     while computer_ships > 0 and player_ships > 0:
+
+        # Print the board after each round
+        print("\nThis is your board:")
+        print_board(player_board, False)
+        print("\nThis is computer's board:")
+        print_board(computer_board, True)
+
         # User's turn
         print("\nYour turn.")
         while True:
