@@ -1,3 +1,4 @@
+# Function to print the board
 def print_board(board):
     print("  ", end="")
     for i in enumerate(board[0]):
