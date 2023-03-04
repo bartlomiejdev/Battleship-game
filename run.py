@@ -5,7 +5,7 @@ import random
 
 def print_board(board):
     print("  ", end="")
-    for i in enumerate(board[0]):
+    for i, _ in enumerate(board[0]):
         print(str(i+1), end=" ")
     print()
     for i, row in enumerate(board):
@@ -63,7 +63,7 @@ def main():
 
     # Set up computers board
     computer_board = []
-    for i in range(board_size):
+    for _ in range(board_size):
         computer_board.append(["."] * board_size)
     place_ships(computer_board)
 
@@ -110,5 +110,15 @@ def main():
             print("Oh no! The computer sunk one of your battleships!")
             if player_ships == 0:
                 print("Computer hit your last ship! You lose!")
-            else:
-                print("The computer missed.")
+        else:
+            print("The computer missed.")
+
+    # Print the final board
+    print("\nThis is your final board:\n")
+    print(player_board)
+    print("\nThis is computer final board:\n")
+    print_board(computer_board)
+
+
+if __name__ == "__main__":
+    main()
