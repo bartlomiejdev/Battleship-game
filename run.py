@@ -130,7 +130,7 @@ def main():
 
     # Print the final board
     print("\nThis is your final board:\n")
-    print(player_board, False)
+    print_board(player_board, False)
     print("\nThis is computer final board:\n")
     print_board(computer_board, False)
 
