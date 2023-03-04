@@ -87,12 +87,19 @@ def main():
         # User's turn
         print("\nYour turn.")
         while True:
-            try:
-                guess_row = int(input(f"Guess Row (1-{board_size}): ")) - 1
-                guess_col = int(input(f"Guess Col (1-{board_size}): ")) - 1
-                break
-            except ValueError:
+            guess_row = input(f"Guess Row (1-{board_size}): ")
+            guess_col = input(f"Guess Col (1-{board_size}): ")
+
+            if not guess_row.isdigit() or not guess_col.isdigit():
                 print("Please enter a valid integer.")
+                continue
+            guess_row = int(guess_row) - 1
+            guess_col = int(guess_col) - 1
+            if (guess_row < 0 or guess_row >= board_size or
+                    guess_col < 0 or guess_col >= board_size):
+                print(f"Please enter integers in the range 1-{board_size}.")
+                continue
+            break
 
         guess = (guess_row, guess_col)
         if check_guess(guess, computer_board):
