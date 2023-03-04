@@ -32,3 +32,15 @@ def place_ships(board):
             ship_col = random.randint(0, len(board[0]) - 1)
         # Place the ship on the board
         board[ship_row][ship_col] = "O"
+
+# Function to check if the user's guess is a hit or miss
+
+
+def check_guess(guess, board):
+    row, col = guess
+    if board[row][col] == "O":
+        board[row][col] = "X"
+        return True
+    else:
+        board[row][col] = "M"
+        return False
