@@ -72,3 +72,27 @@ def main():
     print_board(player_board)
     print("\nThis is computers board:\n")
     print_board(computer_board)
+
+    # Game loop
+    computer_ships = 4
+    player_ships = 4
+    while computer_ships > 0 and player_ships > 0:
+        # User's turn
+        print("\nYour turn.")
+        while True:
+            try:
+                guess_row = int(input(f"Guess Row (1-{board_size}): ")) - 1
+                guess_col = int(input(f"Guess Col (1-{board_size}): ")) - 1
+                break
+            except ValueError:
+                print("Please enter a valid integer.")
+
+        guess = (guess_row, guess_col)
+        if check_guess(guess, computer_board):
+            computer_ships -= 1
+            print("Congratulations! You sunk a battleship!")
+            if computer_ships == 0:
+                print(f"\nCongratulations, {name}! You won!")
+                break
+        else:
+            print("You missed.")
