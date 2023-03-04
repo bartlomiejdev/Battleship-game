@@ -96,3 +96,19 @@ def main():
                 break
         else:
             print("You missed.")
+
+        # Computer turn
+        print("\nComputer's turn.")
+        while True:
+            comp_guess_row = random.randint(0, board_size - 1)
+            comp_guess_col = random.randint(0, board_size - 1)
+            comp_guess = (comp_guess_row, comp_guess_col)
+            if player_board[comp_guess_row][comp_guess_col] != "M" and player_board[comp_guess_row][comp_guess_col] != "X":
+                break
+        if check_guess(comp_guess, player_board):
+            player_ships -= 1
+            print("Oh no! The computer sunk one of your battleships!")
+            if player_ships == 0:
+                print("Computer hit your last ship! You lose!")
+            else:
+                print("The computer missed.")
