@@ -52,7 +52,14 @@ def main():
     # Get the user's name
     name = input("What is your name? ")
     print(f"Hello {name}! Let's play Battleship.\n")
-    board_size_user_choice = int(input("Choose size of grid from 1-9: \n"))
+    while True:
+        board_size_user_choice = input("Choose size of grid from 1-9: \n")
+        if (board_size_user_choice.isdigit() and
+                1 <= int(board_size_user_choice)) <= 9:
+            board_size_user_choice = int(board_size_user_choice)
+            break
+        else:
+            print("Invalid input. Please enter a number between 1 and 9.")
 
     # Set up players board
     board_size = board_size_user_choice
