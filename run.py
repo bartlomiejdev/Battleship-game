@@ -3,7 +3,7 @@ import random
 # Function to print the board
 
 
-def print_board(board):
+def print_board(board, hide_ships=True):
     print("  ", end="")
     for i, _ in enumerate(board[0]):
         print(str(i+1), end=" ")
@@ -11,7 +11,7 @@ def print_board(board):
     for i, row in enumerate(board):
         row_str = str(i + 1) + " "
         for cell in row:
-            if cell == ".":
+            if hide_ships and cell == "O":
                 row_str += ". "
             else:
                 row_str += cell + " "
@@ -69,9 +69,9 @@ def main():
 
     # Print the board
     print("This is your board:\n")
-    print_board(player_board)
+    print_board(player_board, False)
     print("\nThis is computers board:\n")
-    print_board(computer_board)
+    print_board(computer_board, True)
 
     # Game loop
     computer_ships = 4
@@ -103,7 +103,8 @@ def main():
             comp_guess_row = random.randint(0, board_size - 1)
             comp_guess_col = random.randint(0, board_size - 1)
             comp_guess = (comp_guess_row, comp_guess_col)
-            if player_board[comp_guess_row][comp_guess_col] != "M" and player_board[comp_guess_row][comp_guess_col] != "X":
+            if (player_board[comp_guess_row][comp_guess_col] != "M" and
+                    player_board[comp_guess_row][comp_guess_col] != "X"):
                 break
         if check_guess(comp_guess, player_board):
             player_ships -= 1
@@ -115,9 +116,9 @@ def main():
 
     # Print the final board
     print("\nThis is your final board:\n")
-    print(player_board)
+    print(player_board, False)
     print("\nThis is computer final board:\n")
-    print_board(computer_board)
+    print_board(computer_board, False)
 
 
 if __name__ == "__main__":
