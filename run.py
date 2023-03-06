@@ -45,6 +45,11 @@ def check_guess(guess, board):
         return False
 
 
+def clear_console():
+    '''Clearing the console'''
+    os.system('cls')
+
+
 def main():
     '''Function that ask for name, sets up
      the boards, lopping game and set the turns'''
