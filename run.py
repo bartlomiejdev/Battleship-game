@@ -1,9 +1,10 @@
+'''Importing libs'''
 import random
-
-# Function to print the board
+import os
 
 
 def print_board(board, hide_ships=True):
+    '''Function to print out the board with parameter to hide opponents ship'''
     print("  ", end="")
     for i, _ in enumerate(board[0]):
         print(str(i+1), end=" ")
@@ -17,10 +18,9 @@ def print_board(board, hide_ships=True):
                 row_str += cell + " "
         print(row_str)
 
-# Function to randomly place the ships on the board
-
 
 def place_ships(board, board_size):
+    '''Function that place the ships on the board'''
     ship_size = board_size - 1
     for _ in range(ship_size):
         # Generate random coordinates for the ship
@@ -33,10 +33,9 @@ def place_ships(board, board_size):
         # Place the ship on the board
         board[ship_row][ship_col] = "O"
 
-# Function to check if the user's guess is a hit or miss
-
 
 def check_guess(guess, board):
+    '''Function to check if the user's guess is a hit or miss'''
     row, col = guess
     if board[row][col] == "O":
         board[row][col] = "X"
@@ -46,9 +45,9 @@ def check_guess(guess, board):
         return False
 
 
-# Main function
-
 def main():
+    '''Function that ask for name, sets up
+     the boards, lopping game and set the turns'''
     # Get the user's name
     name = input("What is your name? ")
     print(f"Hello {name}! Let's play Battleship.\n")
