@@ -20,8 +20,8 @@ def print_board(board, hide_ships=True):
 # Function to randomly place the ships on the board
 
 
-def place_ships(board):
-    ship_size = 4
+def place_ships(board, board_size):
+    ship_size = board_size - 1
     for _ in range(ship_size):
         # Generate random coordinates for the ship
         ship_row = random.randint(0, len(board) - 1)
@@ -66,17 +66,17 @@ def main():
     player_board = []
     for _ in range(board_size):
         player_board.append(["."] * board_size)
-    place_ships(player_board)
+    place_ships(player_board, board_size)
 
     # Set up computers board
     computer_board = []
     for _ in range(board_size):
         computer_board.append(["."] * board_size)
-    place_ships(computer_board)
+    place_ships(computer_board, board_size)
 
     # Game loop
-    computer_ships = 4
-    player_ships = 4
+    computer_ships = board_size - 1
+    player_ships = board_size - 1
     while computer_ships > 0 and player_ships > 0:
 
         # Print the board after each round
