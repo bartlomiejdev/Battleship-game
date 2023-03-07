@@ -52,6 +52,19 @@ def check_guess(guess, board):
         return False
 
 
+def grid_size():
+    '''Function to set up the board size based on user input'''
+    while True:
+        board_size_user_choice = input("Choose size of grid from 1-9: \n")
+        if (board_size_user_choice.isdigit() and
+                1 <= int(board_size_user_choice)) <= 9:
+            board_size_user_choice = int(board_size_user_choice)
+            break
+        else:
+            print("Invalid input. Please enter a number between 1 and 9.")
+
+
+
 def clear_console():
     '''Clearing the console'''
     os.system('cls')
