@@ -159,9 +159,37 @@ def player_turn(board_size, computer_board, name, ships):
         print("You missed.")
 
 
+def computer_turn(board_size, player_board, ships):
+    '''Function to run computer turn using random lib to generate an integer,
+    check if the guess is miss or hit'''
+    print("\nComputer's turn.")
+    while True:
+        comp_guess_row = random.randint(0, board_size - 1)
+        comp_guess_col = random.randint(0, board_size - 1)
+        comp_guess = (comp_guess_row, comp_guess_col)
+        if (player_board[comp_guess_row][comp_guess_col] != "M" and
+                player_board[comp_guess_row][comp_guess_col] != "X"):
+            break
+    if check_guess(comp_guess, player_board):
+        ships[0] -= 1
+        print("Oh no! The computer sunk one of your battleships!")
+        if ships[0] == 0:
+            print("Computer hit your last ship! You lose!")
+    else:
+        print("The computer missed.")
+
+
 def clear_console():
     '''Clearing the console'''
     os.system('cls')
+
+
+def print_the_final_board(player_board, computer_board):
+    '''Function to print out the final boards'''
+    print("\nThis is your final board:\n")
+    print_board(player_board, False)
+    print("\nThis is computer final board:\n")
+    print_board(computer_board, False)
 
 
 # def main():
