@@ -96,6 +96,35 @@ def update_ship_count(board):
     return ship_count
 
 
+def game_loop(grid_size, name):
+    '''Game loop function that takes two parameters to run player and
+    computer turns, sets the ships counts for the player and computer and sets
+    up the boards by calling the functions'''
+    board_size = grid_size
+    computer_ships = board_size - 1
+    player_ships = board_size - 1
+    player_board = set_up_player_board(board_size)
+    computer_board = set_up_computer_board(board_size)
+
+    while computer_ships > 0 and player_ships > 0:
+        # Print the board after each round
+
+        print("\nThis is your board:")
+        print_board(player_board, False)
+        print("\nThis is computer's board:")
+        print_board(computer_board, True)
+
+        # Update ship counts
+
+        computer_ships = update_ship_count(computer_board)
+        player_ships = update_ship_count(player_board)
+        ships = [player_ships, computer_ships]
+        player_turn(board_size, computer_board, name, ships)
+        computer_turn(board_size, player_board, ships)
+
+    return (player_ships, computer_ships)
+
+
 def clear_console():
     '''Clearing the console'''
     os.system('cls')
