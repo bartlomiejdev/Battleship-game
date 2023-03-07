@@ -75,6 +75,17 @@ def set_up_player_board(grid_size):
     return player_board
 
 
+def set_up_computer_board(grid_size):
+    '''Set ups the computer board as a list based on the value returned from grid_size()'''
+    # Set up computer board
+    board_size = grid_size
+    computer_board = []
+    for _ in range(board_size):
+        computer_board.append(["."] * board_size)
+    place_ships(computer_board, board_size)
+    return computer_board
+
+
 def clear_console():
     '''Clearing the console'''
     os.system('cls')
