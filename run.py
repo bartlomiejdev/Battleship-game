@@ -4,14 +4,26 @@ import os
 
 
 def get_user_name():
-    '''Function to get user name and return it'''
+    '''
+    Function to get user name.
+
+    Returns:
+        name
+
+    '''
     name = input("What is your name? ")
     print(f"Hello {name}! Let's play Battleship.\n")
     return name
 
 
 def print_board(board, hide_ships=True):
-    '''Function to print out the board with parameter to hide opponents ship'''
+    '''
+    Function to print out the board with parameter to hide opponents ship.
+
+    Returns:
+        None
+
+    '''
     print("  ", end="")
     for i, _ in enumerate(board[0]):
         print(str(i+1), end=" ")
@@ -27,7 +39,13 @@ def print_board(board, hide_ships=True):
 
 
 def place_ships(board, board_size):
-    '''Function that place the ships on the board'''
+    '''
+    Randomly places ships on the game board.
+
+    Returns:
+        None
+
+    '''
     ship_size = board_size - 1
     for _ in range(ship_size):
         # Generate random coordinates for the ship
@@ -42,7 +60,13 @@ def place_ships(board, board_size):
 
 
 def check_guess(guess, board):
-    '''Function to check if the user's guess is a hit or miss'''
+    '''
+    Function to check if the user's guess is a hit or miss.
+
+    Returns:
+        bool: True if the guess is a hit, False if it's a miss.
+
+    '''
     row, col = guess
     if board[row][col] == "O":
         board[row][col] = "X"
@@ -53,7 +77,13 @@ def check_guess(guess, board):
 
 
 def grid_size():
-    '''Function to set up the board size based on user input'''
+    '''
+    Prompts the user to choose the size of the game board.
+
+    Returns:
+        int: The size of the game board chosen by the user.
+
+    '''
     while True:
         board_size_user_choice = input("Choose size of grid from 1-9: \n")
         if (board_size_user_choice.isdigit() and
@@ -65,8 +95,14 @@ def grid_size():
 
 
 def set_up_player_board(grid_size):
-    '''Set ups the player board as a list based on the value returned
-     from grid_size()'''
+    '''
+    Set ups the player board as a list based on the value returned
+     from grid_size()
+
+    Returns:
+        list of list of str: The player board, represented as a 2D list.
+
+    '''
     board_size = grid_size
     player_board = []
     for _ in range(board_size):
@@ -76,8 +112,14 @@ def set_up_player_board(grid_size):
 
 
 def set_up_computer_board(grid_size):
-    '''Set ups the computer board as a list based on the value returned
-     from grid_size()'''
+    '''
+    Set ups the computer board as a list based on the value returned
+    from grid_size()
+
+    Returns:
+        list of list of str: The computer board, represented as a 2D list.
+
+    '''
     # Set up computer board
     board_size = grid_size
     computer_board = []
@@ -88,7 +130,13 @@ def set_up_computer_board(grid_size):
 
 
 def update_ship_count(board):
-    '''Ship count function to check how many "O" is there in the board'''
+    '''
+    Counts the number of ships remaining on the specified game board.
+
+    Returns:
+        int: The number of ships remaining on the board.
+
+    '''
     ship_count = 0
     for row in board:
         for cell in row:
@@ -98,9 +146,16 @@ def update_ship_count(board):
 
 
 def game_loop(grid_size, name):
-    '''Game loop function that takes two parameters to run player and
+    '''
+    Game loop function that takes two parameters to run player and
     computer turns, sets the ships counts for the player and computer and sets
-    up the boards by calling the functions'''
+    up the boards by calling the functions
+
+    Returns:
+        tuple of int: The number of ships remaining for the player and
+        computer.
+
+    '''
     board_size = grid_size
     computer_ships = board_size - 1
     player_ships = board_size - 1
@@ -127,9 +182,16 @@ def game_loop(grid_size, name):
 
 
 def player_turn(board_size, computer_board, name, ships):
-    '''Player turn function that ask user for row and column
+    '''
+
+    Player turn function that ask user for row and column
     validate the input and check if the player hit the target or/and
-     win the game'''
+    win the game and modifies the 'ships' list.
+
+    Returns:
+        None
+
+    '''
     print("\nYour turn.")
     ships = list(ships)
     while True:
@@ -161,8 +223,14 @@ def player_turn(board_size, computer_board, name, ships):
 
 
 def computer_turn(board_size, player_board, ships):
-    '''Function to run computer turn using random lib to generate an integer,
-    check if the guess is miss or hit'''
+    '''
+    Function to run computer turn using random lib to generate an integer,
+    check if the guess is miss or hit.
+
+    Returns:
+        None
+
+    '''
     print("\nComputer's turn.")
     while True:
         comp_guess_row = random.randint(0, board_size - 1)
@@ -181,12 +249,24 @@ def computer_turn(board_size, player_board, ships):
 
 
 def clear_console():
-    '''Clearing the console'''
+    '''
+    Clearing the console.
+
+    Returns:
+        None
+
+    '''
     os.system('cls')
 
 
 def print_the_final_board(player_board, computer_board):
-    '''Function to print out the final boards'''
+    '''
+    Function to print out the final boards
+
+    Returns:
+        None
+
+    '''
     print("\nThis is your final board:\n")
     print_board(player_board, False)
     print("\nThis is computer final board:\n")
@@ -194,7 +274,17 @@ def print_the_final_board(player_board, computer_board):
 
 
 def main():
-    '''Main function that runs the game by calling out the other functions'''
+    '''
+
+    Runs the battleship game by calling the necessary functions.
+    Prompts the user to enter their name and grid size, and then sets up
+    the player and computer boards by calling the appropriate functions.
+    Runs the game loop and takes turns between the player and computer
+    until one of them has no more ships left. Finally, prints out the
+    final board configuration for both the player and computer.
+
+    '''
+
     name = get_user_name()
     board_size = grid_size()
     player_board = set_up_player_board(board_size)
