@@ -3,6 +3,13 @@ import random
 import os
 
 
+def get_user_name():
+    '''Function to get user name and return it'''
+    name = input("What is your name? ")
+    print(f"Hello {name}! Let's play Battleship.\n")
+    return name
+
+
 def print_board(board, hide_ships=True):
     '''Function to print out the board with parameter to hide opponents ship'''
     print("  ", end="")
@@ -54,8 +61,7 @@ def main():
     '''Function that ask for name, sets up
      the boards, lopping game and set the turns'''
     # Get the user's name
-    name = input("What is your name? ")
-    print(f"Hello {name}! Let's play Battleship.\n")
+
     while True:
         board_size_user_choice = input("Choose size of grid from 1-9: \n")
         if (board_size_user_choice.isdigit() and
