@@ -64,6 +64,16 @@ def grid_size():
             print("Invalid input. Please enter a number between 1 and 9.")
 
 
+def set_up_player_board(grid_size):
+    '''Set ups the player board as a list based on the value returned from grid_size()'''
+    # Set up players board
+    board_size = grid_size
+    player_board = []
+    for _ in range(board_size):
+        player_board.append(["."] * board_size)
+    place_ships(player_board, board_size)
+    return player_board
+
 
 def clear_console():
     '''Clearing the console'''
