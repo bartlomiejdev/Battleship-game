@@ -86,6 +86,16 @@ def set_up_computer_board(grid_size):
     return computer_board
 
 
+def update_ship_count(board):
+    '''Ship count function to check how many "O" is there in the board'''
+    ship_count = 0
+    for row in board:
+        for cell in row:
+            if cell == "O":
+                ship_count += 1
+    return ship_count
+
+
 def clear_console():
     '''Clearing the console'''
     os.system('cls')
