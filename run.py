@@ -85,6 +85,7 @@ def grid_size():
         int: The size of the game board chosen by the user.
 
     '''
+    clear_console()
     while True:
         board_size_user_choice = input("Choose size of grid from 1-9: \n")
         if (board_size_user_choice.isdigit() and
