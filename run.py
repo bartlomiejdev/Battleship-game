@@ -88,9 +88,11 @@ def grid_size():
     clear_console()
     while True:
         board_size_user_choice = input("Choose size of grid from 1-9: \n")
-        if (board_size_user_choice.isdigit() and
-                1 <= int(board_size_user_choice)) <= 9:
+
+        if board_size_user_choice.isdigit():
             board_size_user_choice = int(board_size_user_choice)
+
+        if board_size_user_choice > 1 <= int(board_size_user_choice) <= 9:
             return board_size_user_choice
         else:
             print("Invalid input. Please enter a number between 1 and 9.")
