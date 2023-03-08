@@ -267,7 +267,7 @@ def clear_console():
         None
 
     '''
-    os.system('cls')
+    os.system('clear')
 
 
 def print_the_final_board(player_board, computer_board):
