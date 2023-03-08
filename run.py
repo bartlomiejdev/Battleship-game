@@ -270,20 +270,6 @@ def clear_console():
     os.system('clear')
 
 
-def print_the_final_board(player_board, computer_board):
-    '''
-    Function to print out the final boards
-
-    Returns:
-        None
-
-    '''
-    print("\nThis is your final board:\n")
-    print_board(player_board, False)
-    print("\nThis is computer final board:\n")
-    print_board(computer_board, False)
-
-
 def main():
     '''
 
@@ -295,15 +281,14 @@ def main():
     final board configuration for both the player and computer.
 
     '''
-
-    name = get_user_name()
-    board_size = grid_size()
-    player_board = set_up_player_board(board_size)
-    computer_board = set_up_computer_board(board_size)
-    ships = game_loop(board_size, name)
-    player_turn(board_size, computer_board, name, ships)
-    computer_turn(board_size, player_board, ships)
-    print_the_final_board(player_board, computer_board)
+    try:
+        name = get_user_name()
+        board_size = grid_size()
+        set_up_player_board(board_size)
+        set_up_computer_board(board_size)
+        game_loop(board_size, name)
+    except Exception as err:
+        print(str(err))
 
 
 if __name__ == "__main__":
