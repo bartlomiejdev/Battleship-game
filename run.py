@@ -200,6 +200,7 @@ def player_turn(board_size, computer_board, name, ships):
     print("\nYour turn.")
     ships = list(ships)
     while True:
+
         guess_row = input(f"Guess Row (1-{board_size}): ")
         guess_col = input(f"Guess Col (1-{board_size}): ")
 
@@ -217,13 +218,15 @@ def player_turn(board_size, computer_board, name, ships):
 
     guess = (guess_row, guess_col)
     if check_guess(guess, computer_board):
-        ships[1] -= 1
-        print("Congratulations! You sunk a battleship!")
+        if ships[1] > 0:
+            ships[1] -= 1
+            clear_console()
+            print("Congratulations! You sunk a battleship!")
         if ships[1] == 0:
             print(f"\nCongratulations, {name}! You won!")
-            # break
-            # FIX THE ISSUE WITH QUITING GAME
+            return True
     else:
+        clear_console()
         print("You missed.")
 
 
