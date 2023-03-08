@@ -107,6 +107,7 @@ def set_up_player_board(grid_size):
         list of list of str: The player board, represented as a 2D list.
 
     '''
+    clear_console()
     board_size = grid_size
     player_board = []
     for _ in range(board_size):
