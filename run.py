@@ -1,16 +1,16 @@
-'''Importing libs'''
+"""Importing libs"""
 import random
 import os
 
 
 def get_user_name():
-    '''
+    """
     Function to get user name.
 
     Returns:
         name
 
-    '''
+    """
     clear_console()
     name = input("What is your name? ")
     print(f"Hello {name}! Let's play Battleship.\n")
@@ -18,13 +18,13 @@ def get_user_name():
 
 
 def print_board(board, hide_ships=True):
-    '''
+    """
     Function to print out the board with parameter to hide opponents ship.
 
     Returns:
         None
 
-    '''
+    """
     print("  ", end="")
     for i, _ in enumerate(board[0]):
         print(str(i+1), end=" ")
@@ -40,13 +40,13 @@ def print_board(board, hide_ships=True):
 
 
 def place_ships(board, board_size):
-    '''
+    """
     Randomly places ships on the game board.
 
     Returns:
         None
 
-    '''
+    """
     ship_size = board_size - 1
     for _ in range(ship_size):
         # Generate random coordinates for the ship
@@ -61,13 +61,13 @@ def place_ships(board, board_size):
 
 
 def check_guess(guess, board):
-    '''
+    """
     Function to check if the user's guess is a hit or miss.
 
     Returns:
         bool: True if the guess is a hit, False if it's a miss.
 
-    '''
+    """
     row, col = guess
     if board[row][col] == "O":
         board[row][col] = "X"
@@ -78,13 +78,13 @@ def check_guess(guess, board):
 
 
 def grid_size():
-    '''
+    """
     Prompts the user to choose the size of the game board.
 
     Returns:
         int: The size of the game board chosen by the user.
 
-    '''
+    """
     clear_console()
     while True:
         board_size_user_choice = input("Choose size of grid from 1-9: \n")
@@ -99,14 +99,14 @@ def grid_size():
 
 
 def set_up_player_board(grid_size):
-    '''
+    """
     Set ups the player board as a list based on the value returned
      from grid_size()
 
     Returns:
         list of list of str: The player board, represented as a 2D list.
 
-    '''
+    """
     clear_console()
     board_size = grid_size
     player_board = []
@@ -117,14 +117,14 @@ def set_up_player_board(grid_size):
 
 
 def set_up_computer_board(grid_size):
-    '''
+    """
     Set ups the computer board as a list based on the value returned
     from grid_size()
 
     Returns:
         list of list of str: The computer board, represented as a 2D list.
 
-    '''
+    """
     board_size = grid_size
     computer_board = []
     for _ in range(board_size):
@@ -134,13 +134,13 @@ def set_up_computer_board(grid_size):
 
 
 def update_ship_count(board):
-    '''
+    """
     Counts the number of ships remaining on the specified game board.
 
     Returns:
         int: The number of ships remaining on the board.
 
-    '''
+    """
     ship_count = 0
     for row in board:
         for cell in row:
@@ -150,7 +150,7 @@ def update_ship_count(board):
 
 
 def game_loop(grid_size, name):
-    '''
+    """
     Game loop function that takes two parameters to run player and
     computer turns, sets the ships counts for the player and computer and sets
     up the boards by calling the functions
@@ -158,7 +158,7 @@ def game_loop(grid_size, name):
     Returns:
         None
 
-    '''
+    """
     board_size = grid_size
     computer_ships = board_size - 1
     player_ships = board_size - 1
@@ -187,7 +187,7 @@ def game_loop(grid_size, name):
 
 
 def player_turn(board_size, computer_board, name, ships):
-    '''
+    """
 
     Player turn function that ask user for row and column
     validate the input and check if the player hit the target or/and
@@ -196,7 +196,7 @@ def player_turn(board_size, computer_board, name, ships):
     Returns:
         None
 
-    '''
+    """
     print("\nYour turn.")
     ships = list(ships)
     while True:
@@ -231,14 +231,14 @@ def player_turn(board_size, computer_board, name, ships):
 
 
 def computer_turn(board_size, player_board, ships):
-    '''
+    """
     Function to run computer turn using random lib to generate an integer,
     check if the guess is miss or hit.
 
     Returns:
         None
 
-    '''
+    """
     ships = list(ships)
     print("\nComputer's turn.")
     while True:
@@ -260,18 +260,18 @@ def computer_turn(board_size, player_board, ships):
 
 
 def clear_console():
-    '''
+    """
     Clearing the console.
 
     Returns:
         None
 
-    '''
+    """
     os.system('clear')
 
 
 def main():
-    '''
+    """
 
     Runs the battleship game by calling the necessary functions.
     Prompts the user to enter their name and grid size, and then sets up
@@ -280,7 +280,7 @@ def main():
     until one of them has no more ships left. Finally, prints out the
     final board configuration for both the player and computer.
 
-    '''
+    """
     try:
         name = get_user_name()
         board_size = grid_size()
