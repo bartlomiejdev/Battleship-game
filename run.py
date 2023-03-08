@@ -11,6 +11,7 @@ def get_user_name():
         name
 
     '''
+    clear_console()
     name = input("What is your name? ")
     print(f"Hello {name}! Let's play Battleship.\n")
     return name
