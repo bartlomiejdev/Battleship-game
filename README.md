@@ -30,8 +30,26 @@ The game is played on a 2-dimensional grid, with each cell on the grid represent
 
 This code has been tested on Python 3.9.5 on Windows 10.
 
--   Code has no errors when passing through [CI Python Linter](https://pep8ci.herokuapp.com/)
 -   Data validation for user inputs. Does not take wrong inputs and loop the game again.
 -   User choice of hit can not be out of the grid spec.
 
+# Solved bugs
 
+-   There was a bug in computer_turn function, because I was trying to modify a tuple that I received. I fixed it by converting tuple to a list.
+
+# Validator testing
+
+-   Code has no errors when passing through [CI Python Linter](https://pep8ci.herokuapp.com/)
+
+# Deployment
+
+-   Steps for deployment:
+    - Fork or clone this repository
+    - Create a new Heroku app
+    - Set the buildbacks to Python and NodeJS in that order
+    - Link the Heroku app to repository
+    - Click on Deploy
+
+# Credits
+
+-  Code Institute for the deployment terminal and the sample of the idea to create battleship game
