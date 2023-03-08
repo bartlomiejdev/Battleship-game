@@ -125,7 +125,6 @@ def set_up_computer_board(grid_size):
         list of list of str: The computer board, represented as a 2D list.
 
     '''
-    # Set up computer board
     board_size = grid_size
     computer_board = []
     for _ in range(board_size):
@@ -157,8 +156,7 @@ def game_loop(grid_size, name):
     up the boards by calling the functions
 
     Returns:
-        tuple of int: The number of ships remaining for the player and
-        computer.
+        None
 
     '''
     board_size = grid_size
@@ -167,7 +165,7 @@ def game_loop(grid_size, name):
     player_board = set_up_player_board(board_size)
     computer_board = set_up_computer_board(board_size)
 
-    while computer_ships > 0 and player_ships > 0:
+    while computer_ships > 0 or player_ships > 0:
         # Print the board after each round
 
         print("\nThis is your board:")
@@ -180,10 +178,12 @@ def game_loop(grid_size, name):
         computer_ships = update_ship_count(computer_board)
         player_ships = update_ship_count(player_board)
         ships = [player_ships, computer_ships]
-        player_turn(board_size, computer_board, name, ships)
-        computer_turn(board_size, player_board, ships)
 
-    return (player_ships, computer_ships)
+        if player_turn(board_size, computer_board, name, ships):
+            break
+
+        if computer_turn(board_size, player_board, ships):
+            break
 
 
 def player_turn(board_size, computer_board, name, ships):
