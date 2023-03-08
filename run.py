@@ -239,6 +239,7 @@ def computer_turn(board_size, player_board, ships):
         None
 
     '''
+    ships = list(ships)
     print("\nComputer's turn.")
     while True:
         comp_guess_row = random.randint(0, board_size - 1)
@@ -248,10 +249,12 @@ def computer_turn(board_size, player_board, ships):
                 player_board[comp_guess_row][comp_guess_col] != "X"):
             break
     if check_guess(comp_guess, player_board):
-        ships[0] -= 1
-        print("Oh no! The computer sunk one of your battleships!")
+        if ships[0] > 0:
+            ships[0] -= 1
+            print("Oh no! The computer sunk one of your battleships!")
         if ships[0] == 0:
             print("Computer hit your last ship! You lose!")
+            return True
     else:
         print("The computer missed.")
 
